@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fileflow"
+version = "0.3.0"
+description = "Flatten a codebase into an LLM-ready prompt: CLI, server and web client sharing a .files-to-prompt config."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "click>=8.1",
+    "pathspec>=0.11",
+]
+
+[project.optional-dependencies]
+server = [
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+]
+dev = [
+    "pytest>=7.4",
+    "httpx>=0.26",
+]
+
+[project.scripts]
+fileflow = "fileflow.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+fileflow = ["web/*.html"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

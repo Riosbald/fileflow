@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fileflow</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+         background: #0d1117; color: #e6edf3; }
+  header { display: flex; align-items: center; gap: 12px; padding: 12px 20px;
+           border-bottom: 1px solid #21262d; background: #010409; }
+  header h1 { font-size: 16px; margin: 0; color: #79c0ff; }
+  #live { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #1c2b1c; color: #7ee787; }
+  #live.off { background: #2b1c1c; color: #f85149; }
+  main { display: grid; grid-template-columns: 320px 1fr; gap: 0; min-height: calc(100vh - 49px); }
+  aside { border-right: 1px solid #21262d; padding: 16px 20px; }
+  section { padding: 16px 20px; overflow: auto; }
+  label { display: block; margin: 10px 0 2px; color: #8b949e; font-size: 12px; }
+  input[type=text], input[type=number], select, textarea {
+    width: 100%; background: #161b22; color: #e6edf3; border: 1px solid #30363d;
+    border-radius: 6px; padding: 6px 8px; font: inherit; }
+  textarea { min-height: 70px; resize: vertical; }
+  .row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+  .row label { margin: 0; }
+  button { margin-top: 14px; margin-right: 8px; background: #238636; color: #fff; border: 0;
+           border-radius: 6px; padding: 7px 14px; font: inherit; cursor: pointer; }
+  button.secondary { background: #21262d; }
+  button:hover { filter: brightness(1.1); }
+  pre { background: #010409; border: 1px solid #21262d; border-radius: 6px;
+        padding: 14px; white-space: pre-wrap; word-break: break-word; min-height: 300px; }
+  #meta { color: #8b949e; font-size: 12px; margin: 6px 0; }
+  #files { color: #8b949e; font-size: 12px; margin-top: 18px; max-height: 260px; overflow: auto; }
+  #files div { padding: 1px 0; }
+  #status { font-size: 12px; color: #8b949e; margin-top: 8px; min-height: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>fileflow</h1>
+  <span id="root"></span>
+  <span id="live" class="off">live: connecting…</span>
+</header>
+<main>
+  <aside>
+    <label for="format">format</label>
+    <select id="format">
+      <option value="default">default</option>
+      <option value="markdown">markdown</option>
+      <option value="xml">xml</option>
+      <option value="json">json</option>
+    </select>
+    <div class="row"><input type="checkbox" id="separators"><label for="separators">separators</label></div>
+    <div class="row"><input type="checkbox" id="line_numbers"><label for="line_numbers">line numbers</label></div>
+    <div class="row"><input type="checkbox" id="include_hidden"><label for="include_hidden">include hidden</label></div>
+    <div class="row"><input type="checkbox" id="ignore_gitignore"><label for="ignore_gitignore">ignore .gitignore</label></div>
+    <label for="max_tokens">max tokens (blank = unlimited)</label>
+    <input type="number" id="max_tokens" min="1">
+    <label for="patterns">exclude patterns (one per line)</label>
+    <textarea id="patterns" placeholder="*.log&#10;node_modules/*"></textarea>
+    <div>
+      <button id="save">Save config</button>
+      <button id="renderBtn" class="secondary">Render</button>
+    </div>
+    <div id="status"></div>
+    <div id="files"></div>
+  </aside>
+  <section>
+    <div id="meta"></div>
+    <pre id="output">Press Render (or edit .files-to-prompt on disk — this page live-refreshes).</pre>
+  </section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const state = { version: null };
+
+function optionsFromForm() {
+  const maxTokens = $('max_tokens').value ? parseInt($('max_tokens').value, 10) : null;
+  const patterns = $('patterns').value.split('\n').map(s => s.trim()).filter(Boolean);
+  const cfg = {
+    format: $('format').value,
+    separators: $('separators').checked,
+    line_numbers: $('line_numbers').checked,
+    include_hidden: $('include_hidden').checked,
+    ignore_gitignore: $('ignore_gitignore').checked,
+  };
+  if (maxTokens) cfg.max_tokens = maxTokens;
+  if (patterns.length) cfg.exclude = { patterns };
+  return cfg;
+}
+
+function fillForm(opts) {
+  $('format').value = opts.format || 'default';
+  $('separators').checked = !!opts.separators;
+  $('line_numbers').checked = !!opts.line_numbers;
+  $('include_hidden').checked = !!opts.include_hidden;
+  $('ignore_gitignore').checked = !!opts.ignore_gitignore;
+  $('max_tokens').value = opts.max_tokens ?? '';
+  $('patterns').value = (opts.exclude || []).join('\n');
+}
+
+async function loadConfig() {
+  const res = await fetch('/api/config');
+  const data = await res.json();
+  $('root').textContent = data.root;
+  fillForm(data.options);
+  state.version = data.version;
+}
+
+async function loadTree() {
+  const res = await fetch('/api/tree');
+  const data = await res.json();
+  $('files').innerHTML = '<b>' + data.files.length + ' files</b>' +
+    data.files.map(f => '<div>' + f.path + ' <span style="opacity:.5">~' + f.tokens + 't</span></div>').join('');
+}
+
+async function render() {
+  $('status').textContent = 'rendering…';
+  const res = await fetch('/api/render', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({}),
+  });
+  const data = await res.json();
+  $('output').textContent = data.output;
+  $('meta').textContent = `format=${data.format} · ${data.files} files · ~${data.tokens} tokens`;
+  $('status').textContent = '';
+}
+
+$('save').onclick = async () => {
+  $('status').textContent = 'saving…';
+  const res = await fetch('/api/config', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(optionsFromForm()),
+  });
+  $('status').textContent = res.ok ? 'saved .files-to-prompt' : 'save failed';
+};
+
+$('renderBtn').onclick = render;
+
+function connectEvents() {
+  const es = new EventSource('/api/events');
+  es.onopen = () => { $('live').textContent = 'live: on'; $('live').classList.remove('off'); };
+  es.onerror = () => { $('live').textContent = 'live: reconnecting…'; $('live').classList.add('off'); };
+  es.onmessage = async (msg) => {
+    const data = JSON.parse(msg.data);
+    if (data.event === 'config-changed') {
+      $('status').textContent = '.files-to-prompt changed on disk — refreshed';
+      await loadConfig();
+      await loadTree();
+      await render();
+    }
+  };
+}
+
+loadConfig().then(loadTree);
+connectEvents();
+</script>
+</body>
+</html>
