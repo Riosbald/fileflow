@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environment
+.venv/
+
+# Test / tooling caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Browser-audit dependencies (npm install in tests/browser)
+node_modules

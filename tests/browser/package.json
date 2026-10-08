@@ -1,0 +1,12 @@
+{
+  "name": "fileflow-browser-audit",
+  "private": true,
+  "type": "module",
+  "description": "Opt-in real-browser audit (axe-core + keyboard + reflow). Not published.",
+  "scripts": { "audit": "node audit.mjs" },
+  "devDependencies": {
+    "@sparticuz/chromium": "^153.0.0",
+    "axe-core": "^4.14.0",
+    "puppeteer-core": "^25.12.0"
+  }
+}

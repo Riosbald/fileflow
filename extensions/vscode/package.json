@@ -1,0 +1,85 @@
+{
+  "name": "fileflow-vscode",
+  "displayName": "fileflow",
+  "description": "Turn your workspace into a single LLM prompt with fileflow.",
+  "version": "0.1.0",
+  "publisher": "fileflow",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "fileflow.generatePrompt",
+        "title": "fileflow: Generate prompt for workspace"
+      },
+      {
+        "command": "fileflow.copyPrompt",
+        "title": "fileflow: Copy prompt to clipboard"
+      },
+      {
+        "command": "fileflow.toggleWatch",
+        "title": "fileflow: Toggle watch mode (auto-refresh)"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "fileflow.generatePrompt",
+          "when": "explorerResourceIsFolder",
+          "group": "fileflow"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "fileflow.generatePrompt"
+        },
+        {
+          "command": "fileflow.copyPrompt"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "fileflow",
+      "properties": {
+        "fileflow.executable": {
+          "type": "string",
+          "default": "fileflow",
+          "description": "Path or name of the fileflow CLI executable."
+        },
+        "fileflow.format": {
+          "type": "string",
+          "enum": ["default", "xml", "json"],
+          "default": "default",
+          "description": "Output format."
+        },
+        "fileflow.includeHidden": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include hidden files."
+        },
+        "fileflow.ignoreGitignore": {
+          "type": "boolean",
+          "default": false,
+          "description": "Ignore .gitignore rules."
+        },
+        "fileflow.maxTokens": {
+          "type": "number",
+          "default": 0,
+          "description": "Token budget (0 = disabled)."
+        },
+        "fileflow.watch": {
+          "type": "boolean",
+          "default": false,
+          "description": "Watch the workspace and auto-refresh the prompt on file changes."
+        }
+      }
+    }
+  }
+}

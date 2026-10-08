@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fileflow"
+version = "0.2.0"
+description = "Concatenate a directory full of files into a single prompt for use with LLMs"
+readme = "README.md"
+authors = [{ name = "fileflow contributors" }]
+license = { text = "Apache-2.0" }
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "click>=8.1",
+    # TOML parser for Python < 3.11 (3.11+ has tomllib in the standard library).
+    "tomli>=1.1; python_version < '3.11'",
+]
+
+[project.urls]
+Homepage = "https://github.com/Riosbald/fileflow"
+Repository = "https://github.com/Riosbald/fileflow"
+
+[project.entry-points.console_scripts]
+fileflow = "fileflow.cli:cli"
+
+[project.optional-dependencies]
+# httpx: required by starlette's TestClient, which the server tests use.
+test = ["pytest", "httpx"]
+server = ["fastapi", "uvicorn[standard]"]
+
+[tool.setuptools]
+packages = ["fileflow", "fileflow.server"]
+
+# The browser client ships inside the wheel so `fileflow serve` works after a
+# plain `pip install` (not only from a source checkout).
+[tool.setuptools.package-data]
+fileflow = ["web/index.html", "web/css/*.css", "web/js/app.js", "web/js/core.js", "web/fonts/*.woff2", "web/fonts/OFL-*.txt"]
