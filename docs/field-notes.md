@@ -129,6 +129,13 @@
 - **N1 resolved (decision D, applied):** a config that cannot be parsed now stops the run (`E_CONFIG_PARSE`, exit 2, "nothing was sent"), matching how a config from a *newer* fileflow was already refused. Writing the test for it exposed a second, wider hole: **wrong-typed settings were silently dropped** (`[output] format = 7` ran with defaults; `check` said nothing about it). `validate_settings` now type-checks the global tables at run time and in `check`, and `check` reports every schema problem instead of stopping at the first. `fileflow serve` stays tolerant by design. Tests: a broken config holding `secrets.mode = "block"` cannot leak a secret; 12 wrong-value cases; the web UI's own output passes. Mutations: 10/10 caught after fixing two of my own errors (a no-op mutation I wrote, and a duplicate `patterns` check that the config reader already makes unreachable, which I deleted).
 - **Measured (one sandbox, fast network, not representative of a Lagos connection):** fresh venv + install of the wheel ≈ 0.7 s (+3 s venv, +5 s for the `[server]` extra); first run on the messy project 92 ms. Install speed is not the barrier — **getting the package is: nothing is published.**
 
+### FN-016 · 2026-10-08 · The first push: a permission wall, and a CI gate that could not fail
+
+- **What:** four sandbox resets had each deleted every local commit (git history rewinds to the initial commit; only working files survive). The first `git push` was **rejected**: the GitHub App refuses to create or update anything under `.github/workflows/` without the `workflows` permission.
+- **Resolution:** the workflow now lives at `ci/ci.yml` with `ci/README.md` (three commands to install it with your own credentials); everything else was pushed. I did not try to route around the permission. Verified after the push: remote SHA equals local; a **fresh clone** installs, `check --strict` is clean and 176 tests across the new suites pass. Local history was squashed to one commit (it had only ever held "re-commit after reset" noise).
+- **A green signal that could not fail (again):** my new CI job gated on `! grep -q "<secret>" out.txt`. Under `bash -e`, a command inverted with `!` never aborts the step, so a leaked secret would have passed. Demonstrated in a shell, replaced with `if grep -q ...; then exit 1; fi`, and shown to fail on a simulated leak.
+- **Still never run:** GitHub CI (not installed), Windows, a real screen reader, a live provider.
+
 ## Not yet observed (so not claimed)
 - Whether the harness template helps an agent do better work.
 - Whether `ask` works against OpenAI, Anthropic or a local Ollama in practice (see FN-011). There is no measurement of that here, and the public sources for the idea

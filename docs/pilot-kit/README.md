@@ -16,7 +16,7 @@ Write down, in one line each: *what did it tell me? what did I need that it did 
 ## Step 1 · Fix the one real blocker: participants cannot install it yet
 
 **Verified here:** `pip wheel . --no-deps` builds `fileflow-0.2.0-py3-none-any.whl` (237 KB, includes the web client and fonts). In a fresh venv it installed in **≈ 0.7 s** (≈ 4 s with venv creation; `[server]` extra +5 s) and the first run took **92 ms** (one sandbox, fast network; yours will differ).
-**Not done:** nothing is pushed to GitHub and nothing is on PyPI, so a participant has no way to get it. Pick one:
+**Done / not done:** the branch is pushed to GitHub (`arena/01a02791-fileflow`; a fresh clone installs and passes), but **nothing is on PyPI** and the CI workflow is not installed yet (`ci/README.md`), so a participant still has no download link. Pick one:
 - *Fastest:* hand them the wheel file: `python -m venv v && v/bin/pip install ./fileflow-0.2.0-py3-none-any.whl` (needs PyPI for `click`).
 - *Also available once CI is installed (`ci/README.md`):* every push builds the wheel in a clean job and uploads it as a downloadable artifact.
 - *Better:* publish to TestPyPI via trusted publishing (roadmap P0). Needs your decision and your accounts.
