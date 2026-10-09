@@ -1,0 +1,35 @@
+# fileflow settings, shared by the CLI, `fileflow serve` and the web client.
+version = 1
+
+[output]
+format = "default"
+separators = true
+line_numbers = false
+max_tokens = 0
+
+[exclude]
+patterns = ["node_modules", "dist", "*.log", "__pycache__"]
+
+[ignore]
+gitignore = true
+hidden = false
+
+[secrets]
+mode = "warn"            # warn | exclude | block | off
+
+[harness]
+max_lines = 100          # AGENTS.md: guidance (OpenAI's "map, not manual"); warns above this
+codex_max_bytes = 32768  # Codex stops reading instructions at this size; errors above it
+
+# Run with:  fileflow --preset onboard --copy
+[presets.onboard]
+description = "Hand an agent the map and the harness docs (not the long reviews)"
+paths = ["AGENTS.md", "ARCHITECTURE.md", "docs/index.md", "docs/HARNESS.md", "docs/QUALITY_SCORE.md"]
+max_tokens = 12000
+instruction = "You are joining this repository. Read the instructions and docs below. Summarise the operating loop, the permissions and the checks in your own words, and list anything that is missing or contradictory. Do not change anything."
+
+[presets.harness-review]
+description = "Review the harness itself against the 8 components"
+paths = ["AGENTS.md", "CLAUDE.md", "docs/HARNESS.md", ".claude"]
+max_tokens = 12000
+instruction = "Review this agent harness against eight components: instructions, context, skills, memory, permissions, tools, checks, loop. For each, say whether it is present, what is only advisory (prose) versus enforced (deny rules, sandbox, failing checks), and what is missing. Give the three highest-value fixes."

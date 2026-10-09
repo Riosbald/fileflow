@@ -1,0 +1,838 @@
+{
+  "documents": [
+    {
+      "path": "README.md",
+      "content": "# fileflow\n"
+    },
+    {
+      "path": "src/app.py",
+      "content": "def main():\n    return 1\n"
+    },
+    {
+      "path": "src/utils.py",
+      "content": "VALUE = 42\n"
+    },
+    {
+      "path": "src/nested/deep.txt",
+      "content": "deep content\n"
+    },
+    {
+      "path": "notes.txt",
+      "content": "no trailing newline"
+    },
+    {
+      "path": "src/odd-separators.txt",
+      "content": "one\ftwo\u2028three\u0085four\u001cfive\nsecond line\n"
+    },
+    {
+      "path": "docs/caf\u00e9.md",
+      "content": "na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n"
+    }
+  ],
+  "scenarios": {
+    "default": "README.md\n---\n# fileflow\n\n---\n\nsrc/app.py\n---\ndef main():\n    return 1\n\n---\n\nsrc/utils.py\n---\nVALUE = 42\n\n---\n\nsrc/nested/deep.txt\n---\ndeep content\n\n---\n\nnotes.txt\n---\nno trailing newline\n---\n\nsrc/odd-separators.txt\n---\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n---\n\ndocs/caf\u00e9.md\n---\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n\n---",
+    "no-separators": "README.md\n# fileflow\n\n\nsrc/app.py\ndef main():\n    return 1\n\n\nsrc/utils.py\nVALUE = 42\n\n\nsrc/nested/deep.txt\ndeep content\n\n\nnotes.txt\nno trailing newline\n\nsrc/odd-separators.txt\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n\ndocs/caf\u00e9.md\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n",
+    "xml": "<documents>\n<document index=\"1\">\n<source>README.md</source>\n<document_content>\n# fileflow\n\n</document_content>\n</document>\n<document index=\"2\">\n<source>src/app.py</source>\n<document_content>\ndef main():\n    return 1\n\n</document_content>\n</document>\n<document index=\"3\">\n<source>src/utils.py</source>\n<document_content>\nVALUE = 42\n\n</document_content>\n</document>\n<document index=\"4\">\n<source>src/nested/deep.txt</source>\n<document_content>\ndeep content\n\n</document_content>\n</document>\n<document index=\"5\">\n<source>notes.txt</source>\n<document_content>\nno trailing newline\n</document_content>\n</document>\n<document index=\"6\">\n<source>src/odd-separators.txt</source>\n<document_content>\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n</document_content>\n</document>\n<document index=\"7\">\n<source>docs/caf\u00e9.md</source>\n<document_content>\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n\n</document_content>\n</document>\n</documents>",
+    "json": "[\n  {\n    \"path\": \"README.md\",\n    \"content\": \"# fileflow\\n\"\n  },\n  {\n    \"path\": \"src/app.py\",\n    \"content\": \"def main():\\n    return 1\\n\"\n  },\n  {\n    \"path\": \"src/utils.py\",\n    \"content\": \"VALUE = 42\\n\"\n  },\n  {\n    \"path\": \"src/nested/deep.txt\",\n    \"content\": \"deep content\\n\"\n  },\n  {\n    \"path\": \"notes.txt\",\n    \"content\": \"no trailing newline\"\n  },\n  {\n    \"path\": \"src/odd-separators.txt\",\n    \"content\": \"one\\ftwo\u2028three\u0085four\\u001cfive\\nsecond line\\n\"\n  },\n  {\n    \"path\": \"docs/caf\u00e9.md\",\n    \"content\": \"na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\\n\"\n  }\n]",
+    "line-numbers": "README.md\n---\n1  # fileflow\n---\n\nsrc/app.py\n---\n1  def main():\n2      return 1\n---\n\nsrc/utils.py\n---\n1  VALUE = 42\n---\n\nsrc/nested/deep.txt\n---\n1  deep content\n---\n\nnotes.txt\n---\n1  no trailing newline\n---\n\nsrc/odd-separators.txt\n---\n1  one\ftwo\u2028three\u0085four\u001cfive\n2  second line\n---\n\ndocs/caf\u00e9.md\n---\n1  na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n---",
+    "xml-line-numbers": "<documents>\n<document index=\"1\">\n<source>README.md</source>\n<document_content>\n1  # fileflow\n</document_content>\n</document>\n<document index=\"2\">\n<source>src/app.py</source>\n<document_content>\n1  def main():\n2      return 1\n</document_content>\n</document>\n<document index=\"3\">\n<source>src/utils.py</source>\n<document_content>\n1  VALUE = 42\n</document_content>\n</document>\n<document index=\"4\">\n<source>src/nested/deep.txt</source>\n<document_content>\n1  deep content\n</document_content>\n</document>\n<document index=\"5\">\n<source>notes.txt</source>\n<document_content>\n1  no trailing newline\n</document_content>\n</document>\n<document index=\"6\">\n<source>src/odd-separators.txt</source>\n<document_content>\n1  one\ftwo\u2028three\u0085four\u001cfive\n2  second line\n</document_content>\n</document>\n<document index=\"7\">\n<source>docs/caf\u00e9.md</source>\n<document_content>\n1  na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n</document_content>\n</document>\n</documents>",
+    "json-line-numbers": "[\n  {\n    \"path\": \"README.md\",\n    \"content\": \"1  # fileflow\"\n  },\n  {\n    \"path\": \"src/app.py\",\n    \"content\": \"1  def main():\\n2      return 1\"\n  },\n  {\n    \"path\": \"src/utils.py\",\n    \"content\": \"1  VALUE = 42\"\n  },\n  {\n    \"path\": \"src/nested/deep.txt\",\n    \"content\": \"1  deep content\"\n  },\n  {\n    \"path\": \"notes.txt\",\n    \"content\": \"1  no trailing newline\"\n  },\n  {\n    \"path\": \"src/odd-separators.txt\",\n    \"content\": \"1  one\\ftwo\u2028three\u0085four\\u001cfive\\n2  second line\"\n  },\n  {\n    \"path\": \"docs/caf\u00e9.md\",\n    \"content\": \"1  na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\"\n  }\n]",
+    "line-numbers-no-separators": "README.md\n1  # fileflow\n\nsrc/app.py\n1  def main():\n2      return 1\n\nsrc/utils.py\n1  VALUE = 42\n\nsrc/nested/deep.txt\n1  deep content\n\nnotes.txt\n1  no trailing newline\n\nsrc/odd-separators.txt\n1  one\ftwo\u2028three\u0085four\u001cfive\n2  second line\n\ndocs/caf\u00e9.md\n1  na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00"
+  },
+  "instruction_scenarios": [
+    {
+      "name": "task-default",
+      "opts": {
+        "format": "default",
+        "lineNumbers": false,
+        "separators": true,
+        "instruction": "Explain the entry point.\n\nKeep it short."
+      },
+      "expected": "# Task\n\nExplain the entry point.\n\nKeep it short.\n\n# Files\n\nREADME.md\n---\n# fileflow\n\n---\n\nsrc/app.py\n---\ndef main():\n    return 1\n\n---\n\nsrc/utils.py\n---\nVALUE = 42\n\n---\n\nsrc/nested/deep.txt\n---\ndeep content\n\n---\n\nnotes.txt\n---\nno trailing newline\n---\n\nsrc/odd-separators.txt\n---\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n---\n\ndocs/caf\u00e9.md\n---\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n\n---"
+    },
+    {
+      "name": "task-no-separators",
+      "opts": {
+        "format": "default",
+        "lineNumbers": false,
+        "separators": false,
+        "instruction": "Explain the entry point.\n\nKeep it short."
+      },
+      "expected": "# Task\n\nExplain the entry point.\n\nKeep it short.\n\n# Files\n\nREADME.md\n# fileflow\n\n\nsrc/app.py\ndef main():\n    return 1\n\n\nsrc/utils.py\nVALUE = 42\n\n\nsrc/nested/deep.txt\ndeep content\n\n\nnotes.txt\nno trailing newline\n\nsrc/odd-separators.txt\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n\ndocs/caf\u00e9.md\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n"
+    },
+    {
+      "name": "task-xml",
+      "opts": {
+        "format": "xml",
+        "lineNumbers": false,
+        "separators": true,
+        "instruction": "Explain the entry point.\n\nKeep it short."
+      },
+      "expected": "<task_instructions>\nExplain the entry point.\n\nKeep it short.\n</task_instructions>\n<documents>\n<document index=\"1\">\n<source>README.md</source>\n<document_content>\n# fileflow\n\n</document_content>\n</document>\n<document index=\"2\">\n<source>src/app.py</source>\n<document_content>\ndef main():\n    return 1\n\n</document_content>\n</document>\n<document index=\"3\">\n<source>src/utils.py</source>\n<document_content>\nVALUE = 42\n\n</document_content>\n</document>\n<document index=\"4\">\n<source>src/nested/deep.txt</source>\n<document_content>\ndeep content\n\n</document_content>\n</document>\n<document index=\"5\">\n<source>notes.txt</source>\n<document_content>\nno trailing newline\n</document_content>\n</document>\n<document index=\"6\">\n<source>src/odd-separators.txt</source>\n<document_content>\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n</document_content>\n</document>\n<document index=\"7\">\n<source>docs/caf\u00e9.md</source>\n<document_content>\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n\n</document_content>\n</document>\n</documents>"
+    },
+    {
+      "name": "task-json",
+      "opts": {
+        "format": "json",
+        "lineNumbers": false,
+        "separators": true,
+        "instruction": "Explain the entry point.\n\nKeep it short."
+      },
+      "expected": "{\n  \"instructions\": \"Explain the entry point.\\n\\nKeep it short.\",\n  \"documents\": [\n    {\n      \"path\": \"README.md\",\n      \"content\": \"# fileflow\\n\"\n    },\n    {\n      \"path\": \"src/app.py\",\n      \"content\": \"def main():\\n    return 1\\n\"\n    },\n    {\n      \"path\": \"src/utils.py\",\n      \"content\": \"VALUE = 42\\n\"\n    },\n    {\n      \"path\": \"src/nested/deep.txt\",\n      \"content\": \"deep content\\n\"\n    },\n    {\n      \"path\": \"notes.txt\",\n      \"content\": \"no trailing newline\"\n    },\n    {\n      \"path\": \"src/odd-separators.txt\",\n      \"content\": \"one\\ftwo\u2028three\u0085four\\u001cfive\\nsecond line\\n\"\n    },\n    {\n      \"path\": \"docs/caf\u00e9.md\",\n      \"content\": \"na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\\n\"\n    }\n  ]\n}"
+    },
+    {
+      "name": "task-line-numbers",
+      "opts": {
+        "format": "default",
+        "lineNumbers": true,
+        "separators": true,
+        "instruction": "Explain the entry point.\n\nKeep it short."
+      },
+      "expected": "# Task\n\nExplain the entry point.\n\nKeep it short.\n\n# Files\n\nREADME.md\n---\n1  # fileflow\n---\n\nsrc/app.py\n---\n1  def main():\n2      return 1\n---\n\nsrc/utils.py\n---\n1  VALUE = 42\n---\n\nsrc/nested/deep.txt\n---\n1  deep content\n---\n\nnotes.txt\n---\n1  no trailing newline\n---\n\nsrc/odd-separators.txt\n---\n1  one\ftwo\u2028three\u0085four\u001cfive\n2  second line\n---\n\ndocs/caf\u00e9.md\n---\n1  na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n---"
+    },
+    {
+      "name": "task-xml-line-numbers",
+      "opts": {
+        "format": "xml",
+        "lineNumbers": true,
+        "separators": true,
+        "instruction": "\n  padded with ASCII whitespace  \r\n"
+      },
+      "expected": "<task_instructions>\npadded with ASCII whitespace\n</task_instructions>\n<documents>\n<document index=\"1\">\n<source>README.md</source>\n<document_content>\n1  # fileflow\n</document_content>\n</document>\n<document index=\"2\">\n<source>src/app.py</source>\n<document_content>\n1  def main():\n2      return 1\n</document_content>\n</document>\n<document index=\"3\">\n<source>src/utils.py</source>\n<document_content>\n1  VALUE = 42\n</document_content>\n</document>\n<document index=\"4\">\n<source>src/nested/deep.txt</source>\n<document_content>\n1  deep content\n</document_content>\n</document>\n<document index=\"5\">\n<source>notes.txt</source>\n<document_content>\n1  no trailing newline\n</document_content>\n</document>\n<document index=\"6\">\n<source>src/odd-separators.txt</source>\n<document_content>\n1  one\ftwo\u2028three\u0085four\u001cfive\n2  second line\n</document_content>\n</document>\n<document index=\"7\">\n<source>docs/caf\u00e9.md</source>\n<document_content>\n1  na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n</document_content>\n</document>\n</documents>"
+    },
+    {
+      "name": "task-blank-is-ignored",
+      "opts": {
+        "format": "default",
+        "lineNumbers": false,
+        "separators": true,
+        "instruction": " \n\t "
+      },
+      "expected": "README.md\n---\n# fileflow\n\n---\n\nsrc/app.py\n---\ndef main():\n    return 1\n\n---\n\nsrc/utils.py\n---\nVALUE = 42\n\n---\n\nsrc/nested/deep.txt\n---\ndeep content\n\n---\n\nnotes.txt\n---\nno trailing newline\n---\n\nsrc/odd-separators.txt\n---\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n---\n\ndocs/caf\u00e9.md\n---\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n\n---"
+    },
+    {
+      "name": "task-unicode",
+      "opts": {
+        "format": "json",
+        "lineNumbers": false,
+        "separators": true,
+        "instruction": "R\u00e9sum\u00e9 \u2014 \u00a0keep\u00a0 \ud83d\ude00"
+      },
+      "expected": "{\n  \"instructions\": \"R\u00e9sum\u00e9 \u2014 \u00a0keep\u00a0 \ud83d\ude00\",\n  \"documents\": [\n    {\n      \"path\": \"README.md\",\n      \"content\": \"# fileflow\\n\"\n    },\n    {\n      \"path\": \"src/app.py\",\n      \"content\": \"def main():\\n    return 1\\n\"\n    },\n    {\n      \"path\": \"src/utils.py\",\n      \"content\": \"VALUE = 42\\n\"\n    },\n    {\n      \"path\": \"src/nested/deep.txt\",\n      \"content\": \"deep content\\n\"\n    },\n    {\n      \"path\": \"notes.txt\",\n      \"content\": \"no trailing newline\"\n    },\n    {\n      \"path\": \"src/odd-separators.txt\",\n      \"content\": \"one\\ftwo\u2028three\u0085four\\u001cfive\\nsecond line\\n\"\n    },\n    {\n      \"path\": \"docs/caf\u00e9.md\",\n      \"content\": \"na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\\n\"\n    }\n  ]\n}"
+    }
+  ],
+  "provenance_scenarios": [
+    {
+      "name": "prov-default",
+      "opts": {
+        "format": "default",
+        "lineNumbers": false,
+        "separators": true,
+        "provenance": {
+          "README.md": {
+            "provenance": "observed",
+            "source_url": "https://example.com/readme?a=1&b=2"
+          },
+          "src/app.py": {
+            "provenance": "generated"
+          },
+          "notes.txt": {
+            "provenance": "user",
+            "source_url": "https://e.com/\"><x y=\"\nline2\u0007bell"
+          },
+          "docs/caf\u00e9.md": {
+            "provenance": "observed",
+            "source_url": "https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00"
+          }
+        }
+      },
+      "expected": "README.md\n[provenance: observed; source: https://example.com/readme?a=1b=2]\n---\n# fileflow\n\n---\n\nsrc/app.py\n[provenance: generated]\n---\ndef main():\n    return 1\n\n---\n\nsrc/utils.py\n---\nVALUE = 42\n\n---\n\nsrc/nested/deep.txt\n---\ndeep content\n\n---\n\nnotes.txt\n[provenance: user; source: https://e.com/x y=line2bell]\n---\nno trailing newline\n---\n\nsrc/odd-separators.txt\n---\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n---\n\ndocs/caf\u00e9.md\n[provenance: observed; source: https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00]\n---\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n\n---"
+    },
+    {
+      "name": "prov-no-separators",
+      "opts": {
+        "format": "default",
+        "lineNumbers": false,
+        "separators": false,
+        "provenance": {
+          "README.md": {
+            "provenance": "observed",
+            "source_url": "https://example.com/readme?a=1&b=2"
+          },
+          "src/app.py": {
+            "provenance": "generated"
+          },
+          "notes.txt": {
+            "provenance": "user",
+            "source_url": "https://e.com/\"><x y=\"\nline2\u0007bell"
+          },
+          "docs/caf\u00e9.md": {
+            "provenance": "observed",
+            "source_url": "https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00"
+          }
+        }
+      },
+      "expected": "README.md\n[provenance: observed; source: https://example.com/readme?a=1b=2]\n# fileflow\n\n\nsrc/app.py\n[provenance: generated]\ndef main():\n    return 1\n\n\nsrc/utils.py\nVALUE = 42\n\n\nsrc/nested/deep.txt\ndeep content\n\n\nnotes.txt\n[provenance: user; source: https://e.com/x y=line2bell]\nno trailing newline\n\nsrc/odd-separators.txt\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n\ndocs/caf\u00e9.md\n[provenance: observed; source: https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00]\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n"
+    },
+    {
+      "name": "prov-xml",
+      "opts": {
+        "format": "xml",
+        "lineNumbers": false,
+        "separators": true,
+        "provenance": {
+          "README.md": {
+            "provenance": "observed",
+            "source_url": "https://example.com/readme?a=1&b=2"
+          },
+          "src/app.py": {
+            "provenance": "generated"
+          },
+          "notes.txt": {
+            "provenance": "user",
+            "source_url": "https://e.com/\"><x y=\"\nline2\u0007bell"
+          },
+          "docs/caf\u00e9.md": {
+            "provenance": "observed",
+            "source_url": "https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00"
+          }
+        }
+      },
+      "expected": "<documents>\n<document index=\"1\" provenance=\"observed\" source_url=\"https://example.com/readme?a=1b=2\">\n<source>README.md</source>\n<document_content>\n# fileflow\n\n</document_content>\n</document>\n<document index=\"2\" provenance=\"generated\">\n<source>src/app.py</source>\n<document_content>\ndef main():\n    return 1\n\n</document_content>\n</document>\n<document index=\"3\">\n<source>src/utils.py</source>\n<document_content>\nVALUE = 42\n\n</document_content>\n</document>\n<document index=\"4\">\n<source>src/nested/deep.txt</source>\n<document_content>\ndeep content\n\n</document_content>\n</document>\n<document index=\"5\" provenance=\"user\" source_url=\"https://e.com/x y=line2bell\">\n<source>notes.txt</source>\n<document_content>\nno trailing newline\n</document_content>\n</document>\n<document index=\"6\">\n<source>src/odd-separators.txt</source>\n<document_content>\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n</document_content>\n</document>\n<document index=\"7\" provenance=\"observed\" source_url=\"https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\">\n<source>docs/caf\u00e9.md</source>\n<document_content>\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n\n</document_content>\n</document>\n</documents>"
+    },
+    {
+      "name": "prov-json",
+      "opts": {
+        "format": "json",
+        "lineNumbers": false,
+        "separators": true,
+        "provenance": {
+          "README.md": {
+            "provenance": "observed",
+            "source_url": "https://example.com/readme?a=1&b=2"
+          },
+          "src/app.py": {
+            "provenance": "generated"
+          },
+          "notes.txt": {
+            "provenance": "user",
+            "source_url": "https://e.com/\"><x y=\"\nline2\u0007bell"
+          },
+          "docs/caf\u00e9.md": {
+            "provenance": "observed",
+            "source_url": "https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00"
+          }
+        }
+      },
+      "expected": "[\n  {\n    \"path\": \"README.md\",\n    \"content\": \"# fileflow\\n\",\n    \"provenance\": \"observed\",\n    \"source_url\": \"https://example.com/readme?a=1b=2\"\n  },\n  {\n    \"path\": \"src/app.py\",\n    \"content\": \"def main():\\n    return 1\\n\",\n    \"provenance\": \"generated\"\n  },\n  {\n    \"path\": \"src/utils.py\",\n    \"content\": \"VALUE = 42\\n\"\n  },\n  {\n    \"path\": \"src/nested/deep.txt\",\n    \"content\": \"deep content\\n\"\n  },\n  {\n    \"path\": \"notes.txt\",\n    \"content\": \"no trailing newline\",\n    \"provenance\": \"user\",\n    \"source_url\": \"https://e.com/x y=line2bell\"\n  },\n  {\n    \"path\": \"src/odd-separators.txt\",\n    \"content\": \"one\\ftwo\u2028three\u0085four\\u001cfive\\nsecond line\\n\"\n  },\n  {\n    \"path\": \"docs/caf\u00e9.md\",\n    \"content\": \"na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\\n\",\n    \"provenance\": \"observed\",\n    \"source_url\": \"https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\"\n  }\n]"
+    },
+    {
+      "name": "prov-xml-line-numbers",
+      "opts": {
+        "format": "xml",
+        "lineNumbers": true,
+        "separators": true,
+        "provenance": {
+          "README.md": {
+            "provenance": "observed",
+            "source_url": "https://example.com/readme?a=1&b=2"
+          },
+          "src/app.py": {
+            "provenance": "generated"
+          },
+          "notes.txt": {
+            "provenance": "user",
+            "source_url": "https://e.com/\"><x y=\"\nline2\u0007bell"
+          },
+          "docs/caf\u00e9.md": {
+            "provenance": "observed",
+            "source_url": "https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00"
+          }
+        }
+      },
+      "expected": "<documents>\n<document index=\"1\" provenance=\"observed\" source_url=\"https://example.com/readme?a=1b=2\">\n<source>README.md</source>\n<document_content>\n1  # fileflow\n</document_content>\n</document>\n<document index=\"2\" provenance=\"generated\">\n<source>src/app.py</source>\n<document_content>\n1  def main():\n2      return 1\n</document_content>\n</document>\n<document index=\"3\">\n<source>src/utils.py</source>\n<document_content>\n1  VALUE = 42\n</document_content>\n</document>\n<document index=\"4\">\n<source>src/nested/deep.txt</source>\n<document_content>\n1  deep content\n</document_content>\n</document>\n<document index=\"5\" provenance=\"user\" source_url=\"https://e.com/x y=line2bell\">\n<source>notes.txt</source>\n<document_content>\n1  no trailing newline\n</document_content>\n</document>\n<document index=\"6\">\n<source>src/odd-separators.txt</source>\n<document_content>\n1  one\ftwo\u2028three\u0085four\u001cfive\n2  second line\n</document_content>\n</document>\n<document index=\"7\" provenance=\"observed\" source_url=\"https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\">\n<source>docs/caf\u00e9.md</source>\n<document_content>\n1  na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n</document_content>\n</document>\n</documents>"
+    },
+    {
+      "name": "prov-xml-instruction",
+      "opts": {
+        "format": "xml",
+        "lineNumbers": false,
+        "separators": true,
+        "instruction": "Review.",
+        "provenance": {
+          "README.md": {
+            "provenance": "observed",
+            "source_url": "https://example.com/readme?a=1&b=2"
+          },
+          "src/app.py": {
+            "provenance": "generated"
+          },
+          "notes.txt": {
+            "provenance": "user",
+            "source_url": "https://e.com/\"><x y=\"\nline2\u0007bell"
+          },
+          "docs/caf\u00e9.md": {
+            "provenance": "observed",
+            "source_url": "https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00"
+          }
+        }
+      },
+      "expected": "<task_instructions>\nReview.\n</task_instructions>\n<documents>\n<document index=\"1\" provenance=\"observed\" source_url=\"https://example.com/readme?a=1b=2\">\n<source>README.md</source>\n<document_content>\n# fileflow\n\n</document_content>\n</document>\n<document index=\"2\" provenance=\"generated\">\n<source>src/app.py</source>\n<document_content>\ndef main():\n    return 1\n\n</document_content>\n</document>\n<document index=\"3\">\n<source>src/utils.py</source>\n<document_content>\nVALUE = 42\n\n</document_content>\n</document>\n<document index=\"4\">\n<source>src/nested/deep.txt</source>\n<document_content>\ndeep content\n\n</document_content>\n</document>\n<document index=\"5\" provenance=\"user\" source_url=\"https://e.com/x y=line2bell\">\n<source>notes.txt</source>\n<document_content>\nno trailing newline\n</document_content>\n</document>\n<document index=\"6\">\n<source>src/odd-separators.txt</source>\n<document_content>\none\ftwo\u2028three\u0085four\u001cfive\nsecond line\n\n</document_content>\n</document>\n<document index=\"7\" provenance=\"observed\" source_url=\"https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\">\n<source>docs/caf\u00e9.md</source>\n<document_content>\nna\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\n\n</document_content>\n</document>\n</documents>"
+    },
+    {
+      "name": "prov-json-instruction",
+      "opts": {
+        "format": "json",
+        "lineNumbers": true,
+        "separators": true,
+        "instruction": "Review.",
+        "provenance": {
+          "README.md": {
+            "provenance": "observed",
+            "source_url": "https://example.com/readme?a=1&b=2"
+          },
+          "src/app.py": {
+            "provenance": "generated"
+          },
+          "notes.txt": {
+            "provenance": "user",
+            "source_url": "https://e.com/\"><x y=\"\nline2\u0007bell"
+          },
+          "docs/caf\u00e9.md": {
+            "provenance": "observed",
+            "source_url": "https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00"
+          }
+        }
+      },
+      "expected": "{\n  \"instructions\": \"Review.\",\n  \"documents\": [\n    {\n      \"path\": \"README.md\",\n      \"content\": \"1  # fileflow\",\n      \"provenance\": \"observed\",\n      \"source_url\": \"https://example.com/readme?a=1b=2\"\n    },\n    {\n      \"path\": \"src/app.py\",\n      \"content\": \"1  def main():\\n2      return 1\",\n      \"provenance\": \"generated\"\n    },\n    {\n      \"path\": \"src/utils.py\",\n      \"content\": \"1  VALUE = 42\"\n    },\n    {\n      \"path\": \"src/nested/deep.txt\",\n      \"content\": \"1  deep content\"\n    },\n    {\n      \"path\": \"notes.txt\",\n      \"content\": \"1  no trailing newline\",\n      \"provenance\": \"user\",\n      \"source_url\": \"https://e.com/x y=line2bell\"\n    },\n    {\n      \"path\": \"src/odd-separators.txt\",\n      \"content\": \"1  one\\ftwo\u2028three\u0085four\\u001cfive\\n2  second line\"\n    },\n    {\n      \"path\": \"docs/caf\u00e9.md\",\n      \"content\": \"1  na\u00efve \u2014 \u65e5\u672c\u8a9e \ud83d\ude00\",\n      \"provenance\": \"observed\",\n      \"source_url\": \"https://e.com/\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\"\n    }\n  ]\n}"
+    }
+  ],
+  "include_cases": [
+    {
+      "patterns": [
+        "*.py"
+      ],
+      "rel": "a.py",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "*.py"
+      ],
+      "rel": "src/main.py",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "*.py"
+      ],
+      "rel": "A.PY",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "*.py"
+      ],
+      "rel": "a.pyc",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "*.py"
+      ],
+      "rel": ".py",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "a?.py"
+      ],
+      "rel": "ab.py",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "a?.py"
+      ],
+      "rel": "a.py",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "a?.py"
+      ],
+      "rel": "abc.py",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "src/*.py"
+      ],
+      "rel": "src/main.py",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "src/*.py"
+      ],
+      "rel": "src/deep/inner.py",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "src/*.py"
+      ],
+      "rel": "other/src/main.py",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "src/*.py"
+      ],
+      "rel": "main.py",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "docs/guide.md"
+      ],
+      "rel": "docs/guide.md",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "docs/guide.md"
+      ],
+      "rel": "docs/guide.mdx",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "[ab].py"
+      ],
+      "rel": "a.py",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "[ab].py"
+      ],
+      "rel": "[ab].py",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "a+b.py"
+      ],
+      "rel": "a+b.py",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "a+b.py"
+      ],
+      "rel": "aab.py",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "a.b"
+      ],
+      "rel": "a.b",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "a.b"
+      ],
+      "rel": "axb",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "(x)"
+      ],
+      "rel": "(x)",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "^x$"
+      ],
+      "rel": "^x$",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "x|y"
+      ],
+      "rel": "x|y",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "x|y"
+      ],
+      "rel": "x",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "{a}"
+      ],
+      "rel": "{a}",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "a\\b"
+      ],
+      "rel": "a\\b",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "*"
+      ],
+      "rel": "anything.at.all",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "?"
+      ],
+      "rel": "x",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "?"
+      ],
+      "rel": "",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "??"
+      ],
+      "rel": "\ud83d\ude00",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "?"
+      ],
+      "rel": "\ud83d\ude00",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "*\u00e9*"
+      ],
+      "rel": "caf\u00e9.md",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "*.txt",
+        "*.md"
+      ],
+      "rel": "notes.md",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "*.txt",
+        "*.md"
+      ],
+      "rel": "notes.py",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "caf\u00e9.*"
+      ],
+      "rel": "caf\u00e9.md",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "a?c"
+      ],
+      "rel": "a\nc",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "*"
+      ],
+      "rel": "line\nbreak",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "src/?"
+      ],
+      "rel": "src/x",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "src/?"
+      ],
+      "rel": "src/xy",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "*/*"
+      ],
+      "rel": "a/b",
+      "expected": true
+    },
+    {
+      "patterns": [
+        "*/*"
+      ],
+      "rel": "ab",
+      "expected": false
+    },
+    {
+      "patterns": [
+        "**"
+      ],
+      "rel": "x/y/z",
+      "expected": true
+    }
+  ],
+  "provenance_parse_cases": [
+    {
+      "text": "---\nprovenance: observed\nsource_url: https://e.com/x\n---\nbody",
+      "expected": {
+        "provenance": "observed",
+        "source_url": "https://e.com/x"
+      }
+    },
+    {
+      "text": "---\nprovenance: observed\nsource_url: \"https://e.com/x?a=1&b=2\"\n---\n",
+      "expected": {
+        "provenance": "observed",
+        "source_url": "https://e.com/x?a=1&b=2"
+      }
+    },
+    {
+      "text": "---\nprovenance: generated\n---\n",
+      "expected": {
+        "provenance": "generated"
+      }
+    },
+    {
+      "text": "---\nprovenance:   USER  \n---\n",
+      "expected": {
+        "provenance": "user"
+      }
+    },
+    {
+      "text": "---\nprovenance: 'observed'\n---\n",
+      "expected": {
+        "provenance": "observed"
+      }
+    },
+    {
+      "text": "---\nprovenance: \"observed\"\n---\n",
+      "expected": {
+        "provenance": "observed"
+      }
+    },
+    {
+      "text": "---\r\nprovenance: observed\r\nsource_url: https://e.com/crlf\r\n---\r\n",
+      "expected": {
+        "provenance": "observed",
+        "source_url": "https://e.com/crlf"
+      }
+    },
+    {
+      "text": "---\nprovenance: made-up\n---\n",
+      "expected": null
+    },
+    {
+      "text": "---\nprovenance:\n---\n",
+      "expected": null
+    },
+    {
+      "text": "---\ntitle: x\n---\n",
+      "expected": null
+    },
+    {
+      "text": "no front matter",
+      "expected": null
+    },
+    {
+      "text": "---\nprovenance: observed\n",
+      "expected": null
+    },
+    {
+      "text": "\n---\nprovenance: observed\n---\n",
+      "expected": null
+    },
+    {
+      "text": "---\nprovenance: observed\nsource_url: \"unterminated\n---\n",
+      "expected": {
+        "provenance": "observed",
+        "source_url": "\"unterminated"
+      }
+    },
+    {
+      "text": "---\nprovenance: observed\nsource_url: \"caf\\u00e9 \\\"q\\\"\"\n---\n",
+      "expected": {
+        "provenance": "observed",
+        "source_url": "caf\u00e9 \"q\""
+      }
+    },
+    {
+      "text": "---\nprovenance: observed\nsource_url: >\n  https://e.com/folded\n  more\n---\n",
+      "expected": {
+        "provenance": "observed",
+        "source_url": "https://e.com/folded more"
+      }
+    },
+    {
+      "text": "---\nprovenance: observed\nprovenance: user\n---\n",
+      "expected": {
+        "provenance": "user"
+      }
+    },
+    {
+      "text": "---\n__proto__: x\nprovenance: observed\nconstructor: y\n---\n",
+      "expected": {
+        "provenance": "observed"
+      }
+    },
+    {
+      "text": "---\nprovenance:\u00a0observed\n---\n",
+      "expected": null
+    },
+    {
+      "text": "---\u00a0\nprovenance: observed\n---\n",
+      "expected": null
+    },
+    {
+      "text": "--- \nprovenance: observed\n--- \n",
+      "expected": {
+        "provenance": "observed"
+      }
+    },
+    {
+      "text": "---\n  provenance: observed\n---\n",
+      "expected": null
+    },
+    {
+      "text": "---\nprovenance : observed\n---\n",
+      "expected": null
+    },
+    {
+      "text": "---\nProvenance: observed\n---\n",
+      "expected": null
+    }
+  ],
+  "gitignore_cases": [
+    {
+      "name": "root",
+      "scopes": [
+        {
+          "dir": "",
+          "patterns": [
+            "build/",
+            "*.pyc",
+            "!keep.pyc",
+            "/root-only.txt",
+            "logs/*.log"
+          ]
+        }
+      ],
+      "paths": [
+        {
+          "path": "build",
+          "isDir": true,
+          "expected": true
+        },
+        {
+          "path": "src/app.pyc",
+          "isDir": false,
+          "expected": true
+        },
+        {
+          "path": "keep.pyc",
+          "isDir": false,
+          "expected": false
+        },
+        {
+          "path": "root-only.txt",
+          "isDir": false,
+          "expected": true
+        },
+        {
+          "path": "sub/root-only.txt",
+          "isDir": false,
+          "expected": false
+        },
+        {
+          "path": "logs/app.log",
+          "isDir": false,
+          "expected": true
+        },
+        {
+          "path": "app.log",
+          "isDir": false,
+          "expected": false
+        },
+        {
+          "path": "src/app.py",
+          "isDir": false,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "name": "nested",
+      "scopes": [
+        {
+          "dir": "",
+          "patterns": [
+            "*.tmp"
+          ]
+        },
+        {
+          "dir": "src",
+          "patterns": [
+            "/secret.txt",
+            "cache/"
+          ]
+        }
+      ],
+      "paths": [
+        {
+          "path": "src/secret.txt",
+          "isDir": false,
+          "expected": true
+        },
+        {
+          "path": "secret.txt",
+          "isDir": false,
+          "expected": false
+        },
+        {
+          "path": "notes.tmp",
+          "isDir": false,
+          "expected": true
+        },
+        {
+          "path": "src/cache",
+          "isDir": true,
+          "expected": true
+        }
+      ]
+    }
+  ],
+  "_comment": "Shared golden-output corpus. Expected strings are computed from the Python engine (reference). Both pytest and Node assert byte-identical output. Regenerate with: python3 testdata/generate_golden.py"
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="fileflow web client — turn a project file tree into a single LLM prompt, in the browser."
+    />
+    <title>fileflow — files to prompt</title>
+    <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">Skip to the workspace</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="8" y1="13" x2="16" y2="13" />
+            <line x1="8" y1="17" x2="13" y2="17" />
+          </svg>
+        </span>
+        <span class="brand-name">fileflow</span>
+        <span class="brand-tag">files → prompt</span>
+      </a>
+
+      <nav class="header-actions" aria-label="Primary">
+        <a class="link-chip" href="#output" data-scroll>
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+          Output
+        </a>
+        <button
+          class="icon-button"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle color theme"
+          title="Toggle theme"
+        >
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">AI-native developer tooling</p>
+        <h1 class="hero-title">
+          Turn your project into a
+          <span class="grad">single LLM prompt</span>
+        </h1>
+        <p class="hero-subtitle">
+          Build a virtual file tree, tune the options, and get a deterministic,
+          parseable prompt ready to pipe into any model — all in the browser.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#workspace">Open the workspace</a>
+          <button class="btn btn-ghost" id="load-sample" type="button">
+            Reset to sample project
+          </button>
+        </div>
+        <ul class="feature-chips">
+          <li>Gitignore aware</li>
+          <li>Hidden-file control</li>
+          <li>Default · XML · JSON</li>
+          <li>Line numbers</li>
+        </ul>
+      </section>
+
+      <section class="workspace" id="workspace" tabindex="-1" aria-label="Workspace">
+        <aside class="panel sidebar" id="sidebar">
+          <div class="panel-head">
+            <h2 class="panel-title">Project</h2>
+            <div class="head-actions">
+              <button class="btn btn-sm" id="import-btn" type="button" title="Import real files / a folder from your computer">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Import
+              </button>
+              <button class="btn btn-sm btn-primary" id="add-file-btn" type="button">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add file
+              </button>
+            </div>
+          </div>
+
+          <div class="drop-zone" id="drop-zone" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Drop files or a folder to import</span>
+          </div>
+
+          <div class="tree" id="file-tree" role="tree" aria-label="Project files"></div>
+
+          <div class="options">
+            <h2 class="panel-title">Options</h2>
+
+            <div class="option-row">
+              <label class="switch">
+                <input type="checkbox" id="opt-include-hidden" />
+                <span class="switch-track" aria-hidden="true"></span>
+                <span class="switch-label">Include hidden files</span>
+              </label>
+            </div>
+
+            <div class="option-row">
+              <label class="switch">
+                <input type="checkbox" id="opt-ignore-gitignore" />
+                <span class="switch-track" aria-hidden="true"></span>
+                <span class="switch-label">Ignore .gitignore</span>
+              </label>
+            </div>
+
+            <div class="option-row">
+              <label class="switch">
+                <input type="checkbox" id="opt-line-numbers" />
+                <span class="switch-track" aria-hidden="true"></span>
+                <span class="switch-label">Line numbers</span>
+              </label>
+            </div>
+
+            <div class="option-row">
+              <label class="switch">
+                <input type="checkbox" id="opt-separators" checked />
+                <span class="switch-track" aria-hidden="true"></span>
+                <span class="switch-label">--- separators</span>
+              </label>
+            </div>
+
+            <div class="option-row" id="server-option" hidden>
+              <label class="switch">
+                <input type="checkbox" id="opt-server" />
+                <span class="switch-track" aria-hidden="true"></span>
+                <span class="switch-label">
+                  Live server
+                  <span class="switch-sub">real project via fileflow serve</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="option-field">
+              <label class="option-caption" for="opt-format">Output format</label>
+              <div class="segmented" role="radiogroup" aria-label="Output format" id="opt-format">
+                <span class="seg-glider" aria-hidden="true"></span>
+                <button type="button" role="radio" aria-checked="true" data-format="default">Default</button>
+                <button type="button" role="radio" aria-checked="false" data-format="xml">XML</button>
+                <button type="button" role="radio" aria-checked="false" data-format="json">JSON</button>
+              </div>
+            </div>
+
+            <div class="option-field">
+              <label class="option-caption" for="opt-patterns">Ignore patterns</label>
+              <div class="chips-input" id="patterns-wrap">
+                <input
+                  id="opt-patterns"
+                  type="text"
+                  placeholder="Add pattern, press Enter…"
+                  autocomplete="off"
+                  spellcheck="false"
+                  aria-describedby="pattern-help pattern-hint"
+                />
+              </div>
+              <p class="pattern-hint" id="pattern-help">Matches file and folder names, not paths. Example: <code>*.log</code> or <code>dist</code></p>
+              <p class="pattern-hint" id="pattern-hint" role="status"></p>
+            </div>
+
+            <div class="option-field">
+              <label class="option-caption" for="opt-max-tokens">Token budget</label>
+              <select id="opt-max-tokens" class="select">
+                <option value="0">Off — include everything</option>
+                <option value="2000">2,000 tokens</option>
+                <option value="4000">4,000 tokens</option>
+                <option value="8000" selected>8,000 tokens</option>
+                <option value="16000">16,000 tokens</option>
+                <option value="32000">32,000 tokens</option>
+              </select>
+            </div>
+          </div>
+        </aside>
+
+        <section class="panel editor-panel" id="editor-panel">
+          <div class="panel-head">
+            <h2 class="panel-title">
+              Editor
+              <span class="editor-file" id="editor-file">—</span>
+            </h2>
+            <button class="icon-button danger" id="delete-file-btn" type="button" aria-label="Delete selected file" title="Delete selected file">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6" />
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                <line x1="10" y1="11" x2="10" y2="17" />
+                <line x1="14" y1="11" x2="14" y2="17" />
+              </svg>
+            </button>
+          </div>
+          <p class="empty-editor" id="empty-editor">Select a file from the tree to edit its contents.</p>
+          <textarea
+            class="editor"
+            id="editor"
+            placeholder="File contents…"
+            aria-label="File contents editor"
+            spellcheck="false"
+            hidden
+          ></textarea>
+        </section>
+
+        <section class="panel output-panel" id="output">
+          <div class="panel-head">
+            <div class="panel-title-group">
+              <h2 class="panel-title">Prompt</h2>
+              <p class="meta" id="output-meta" role="status"></p>
+            </div>
+            <div class="head-actions">
+              <button class="btn btn-sm" id="copy-btn" type="button">
+                <svg class="ico-copy" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                <span class="ico-check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </span>
+                <span class="btn-label">Copy</span>
+              </button>
+              <button class="btn btn-sm" id="cli-btn" type="button" title="Copy the equivalent fileflow CLI command">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                CLI cmd
+              </button>
+              <button class="btn btn-sm" id="download-btn" type="button">Download</button>
+            </div>
+          </div>
+          <!-- One file that is most of the prompt: rare, specific, one click to fix. role=status so a
+               screen reader hears it once, when it appears (the script only rewrites it when it changes). -->
+          <div class="advice" id="advice" role="status"></div>
+          <details class="left-out" id="left-out" hidden>
+            <summary id="left-out-summary">Left out of the prompt</summary>
+            <div class="left-out-body" id="left-out-body"></div>
+          </details>
+          <pre class="output" id="output-pre" tabindex="0" aria-label="Generated prompt (read-only)"></pre>
+          <div class="output-empty" id="output-empty">No files match — try toggling options or adding files.</div>
+          <div class="trim-note" id="trim-note" hidden></div>
+        </section>
+      </section>
+
+      <section class="how-it-works">
+        <div class="section-head">
+          <p class="eyebrow">Under the hood</p>
+          <h2 class="section-title">Faithful to the <span class="grad">fileflow</span> CLI</h2>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-num">01</div>
+            <h3>Traverse recursively</h3>
+            <p>Every file is collected depth-first, sorted, and prefixed with its relative path.</p>
+          </article>
+          <article class="card reveal" data-delay="1">
+            <div class="card-num">02</div>
+            <h3>Apply the rules</h3>
+            <p>Hidden files, `.gitignore` patterns and your custom ignore globs are all honored.</p>
+          </article>
+          <article class="card reveal" data-delay="2">
+            <div class="card-num">03</div>
+            <h3>Format the prompt</h3>
+            <p>Rendered as default, XML or JSON — deterministic and ready to pipe into an LLM.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>fileflow — an AI-native developer tool. Deterministic output, no magic.</p>
+    </footer>
+
+    <!-- Add file dialog -->
+    <div class="modal-backdrop" id="add-modal" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="add-modal-title">
+        <div class="modal-head">
+          <h2 id="add-modal-title">Add file</h2>
+          <button class="icon-button" id="modal-close" type="button" aria-label="Close dialog">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <form id="add-form" novalidate>
+          <div class="field">
+            <label for="new-path">Path</label>
+            <input id="new-path" type="text" placeholder="src/app.py" autocomplete="off" spellcheck="false" required aria-describedby="new-path-hint new-path-error" />
+            <p class="field-error" id="new-path-error" hidden>Enter a file path, for example src/app.py.</p>
+            <p class="hint" id="new-path-hint">Use `/` to nest inside folders. Folders are created automatically.</p>
+          </div>
+          <div class="field">
+            <label for="new-content">Content</label>
+            <textarea id="new-content" placeholder="// file contents" spellcheck="false"></textarea>
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-ghost" id="modal-cancel" type="button">Cancel</button>
+            <button class="btn btn-primary" type="submit">Add file</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Hidden input used as a fallback folder-picker when the File System
+         Access API (showDirectoryPicker) is unavailable. -->
+    <input type="file" id="import-input" webkitdirectory multiple hidden />
+
+    <script src="js/core.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

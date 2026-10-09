@@ -1,0 +1,139 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-python:
+    name: Python (CLI + golden contract)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: |
+          pip install --upgrade pip
+          pip install -e ".[test,server]"
+      - name: Verify golden corpus is up to date
+        run: |
+          python3 testdata/generate_golden.py
+          git diff --exit-code -- testdata/golden-corpus.json
+      - name: Run tests
+        run: pytest -v
+      - name: Harness check (the repo holds itself to the rules it ships)
+        run: fileflow check --strict
+
+  test-node:
+    name: Node (web engine + golden contract)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Run web engine tests
+        run: |
+          node fileflow/web/js/golden.test.js
+          node fileflow/web/js/core.test.js
+          node fileflow/web/js/smoke.test.js
+          node fileflow/web/js/live.test.js
+
+  contract:
+    name: Cross-engine parity (ADR-001)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Python engine
+        run: |
+          pip install -e ".[test]"
+          python -m pytest tests/test_golden_contract.py -q
+      - name: Gitignore parity (A2)
+        run: |
+          python -m pytest tests/test_golden_contract.py::test_gitignore_matches_golden -q
+          node fileflow/web/js/golden.test.js
+      - name: Property-based cross-engine fuzz
+        run: |
+          FILEFLOW_FUZZ_CASES=200 python -m pytest tests/test_cross_engine_fuzz.py -q
+      - name: JS engine
+        run: node fileflow/web/js/golden.test.js
+
+  browser-audit:
+    name: Browser audit (WCAG 2.2 AA, keyboard, reflow) — advisory until it has run green on GitHub
+    runs-on: ubuntu-latest
+    continue-on-error: true   # never run on GitHub yet: do not block merges until it has
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install fileflow and audit dependencies
+        run: |
+          pip install -e ".[server]"
+          (cd tests/browser && npm install --no-audit --no-fund)
+      - name: Start the server on a demo project
+        run: |
+          python scripts/make_demo.py /tmp/fileflow-demo
+          nohup fileflow serve --root /tmp/fileflow-demo --port 8090 --no-token > /tmp/serve.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8090/api/health && break; sleep 1; done
+      - name: Audit
+        run: cd tests/browser && BROWSER_EXE="$(which google-chrome)" BASE_URL=http://127.0.0.1:8090 node audit.mjs
+
+  wheel:
+    name: Build the wheel and run it from a clean install (this is what pilot participants get)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build
+        run: |
+          pip install --upgrade pip build
+          python -m build --wheel --outdir dist-wheel .
+      - name: Install into a fresh venv and take the stranger walkthrough
+        run: |
+          python -m venv /tmp/clean
+          /tmp/clean/bin/pip install dist-wheel/*.whl
+          /tmp/clean/bin/fileflow --version
+          python scripts/make_stranger_project.py /tmp/stranger-app
+          cd /tmp/stranger-app
+          /tmp/clean/bin/fileflow . 2>/tmp/stderr.txt >/tmp/stdout.txt || true
+          cat /tmp/stderr.txt
+          grep -q "Heads-up: package-lock.json" /tmp/stderr.txt
+          # (`! grep` would never fail a bash -e step; test the exit status explicitly)
+          if grep -q "S3cr3tP4ssw0rd" /tmp/stdout.txt /tmp/stderr.txt; then echo "SECRET LEAKED"; exit 1; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fileflow-wheel
+          path: dist-wheel/*.whl
+          if-no-files-found: error
+
+  test-windows:
+    name: Python on Windows — advisory: never run on Windows before, expect to find failures
+    runs-on: windows-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          pip install --upgrade pip
+          pip install -e ".[test,server]"
+      - run: pytest -q -p no:cacheprovider
